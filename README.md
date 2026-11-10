@@ -1,5 +1,7 @@
 # Earia 05 – letöltés és indítás
 
+[English version](README.en.md)
+
 A továbbadható program az **earia** mappa. Az egész mappát töltsd le/csomagold ki, ne csak az indítófájlt. A README egy példánya a programban is megtalálható.
 
 GitHubról: **Code → Download ZIP**, majd a ZIP teljes tartalmát csomagold ki egy írható mappába. Az `INDITAS.cmd` a kicsomagolt program gyökerében található.
@@ -92,3 +94,7 @@ image-gen\runtime\python.exe image-gen\test_hardware.py
 Rögzített modellforrások/revíziók: `image-gen\install-models.py`. Futás közben a képmodellek betöltése offline történik. A telepítő nem módosítja a rendszer Pythonját. A 04-esből átvett játékszabályok/narrátorprompt tartalmát ez a csomagolás nem írta át. A karakterek összemosódását és a stílusbefolyásolás minőségét ez a kiadás nem oldja meg; most a továbbadható telepítés és a hardverfüggés volt a feladat.
 
 Külső összetevők: [Python](https://www.python.org/downloads/release/python-31312/), [PyTorch](https://pytorch.org/get-started/locally/), [Diffusers](https://huggingface.co/docs/diffusers/), [SD1.5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5), [IP-Adapter](https://huggingface.co/h94/IP-Adapter), [Pony](https://huggingface.co/Runware/Pony_Diffusion_V6_XL). Mindegyik saját licenccel rendelkezik; ezek nem helyettesítik az Earia forráskódjának szerző által választandó licencét.
+
+## Kapcsolat és visszajelzés
+
+Javaslatokat, hibajelentéseket, hibajavításokat és véleményeket örömmel várok a **[clawdraw69@gmail.com](mailto:clawdraw69@gmail.com)** e-mail-címre.
