@@ -1,0 +1,14 @@
+config.json
+config.json.*
+saves/**
+logs/**
+backups/**
+models/**
+image-gen/models/**
+image-gen/runtime/**
+image-gen/.venv/**
+image-gen/.downloads/**
+image-gen/installed.json
+image-gen/references/**
+**/__pycache__/**
+*.pyc

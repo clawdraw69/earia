@@ -1,0 +1,5 @@
+A hasznalni kivant SD1.5-alapu YiffyMix checkpoint helye:
+yiffymix.safetensors
+
+A fajl nincs mellekelve. A kepmotor telepitojet is futtasd az SD1.5
+alapkomponensek letoltesehez. Reszletek: az earia mappa README.md fajlja.

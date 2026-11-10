@@ -1,0 +1,12 @@
+{
+  "provider": "api",
+  "apiBaseUrl": "https://api.deepseek.com",
+  "apiModel": "deepseek-flash",
+  "apiKeyEncrypted": "",
+  "narrationTemperature": 0.85,
+  "modelPath": "",
+  "runtimePath": "runtime/llama-server.exe",
+  "contextSize": 8192,
+  "gpuLayers": 99,
+  "adultTone": true
+}

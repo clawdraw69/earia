@@ -1,0 +1,4 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {responseSchema} from '../response-schema.mjs';
+test('Kötött beszélők, választások és kezdőállapot séma',()=>{const g={playerId:'p',characters:[{id:'p'},{id:'n'}]};const chat=responseSchema(g);assert.deepEqual(chat.properties.messages.items.properties.speaker.enum,['narrator','n']);assert.equal(chat.properties.choices.minItems,2);assert.equal(chat.additionalProperties,false);assert.equal('privatePlan' in chat.properties,false);assert.equal(chat.properties.events.items.properties.contacts.type,'object');assert.equal(chat.properties.events.items.properties.contacts.additionalProperties.maximum,1);const setup=responseSchema(g,true);assert.equal(setup.properties.initialStates.minItems,2);assert.ok(setup.required.includes('privatePlan'));assert.deepEqual(setup.properties.initialStates.items.properties.id.enum,['p','n']);});

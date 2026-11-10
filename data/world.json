@@ -1,0 +1,14 @@
+{
+  "name":"Earia",
+  "premise":"Békés fantasy világ, amelynek népei eltérő kultúrákat és életmódokat alakítottak ki. A férfiak antropomorf, emberi értelmű lények; a nők emberi megjelenésűek. A karakterek önálló személyiséggel rendelkeznek.",
+  "regions":[
+    {"name":"Ursa-hegység","description":"Északi hegyvidék, örök téli csúcsok. Ursa medveférfiak és emberi nők. Termálforrásos barlangrendszer; a férfiak a hűvösebb külső sátrakban alszanak. A Kehely szent hely a barlang mélyén. Jégkarom: szent jégbarlang a hegycsúcson."},
+    {"name":"Wulf falu","description":"Tajga a hegy lábánál, faházak, vasfa-feldolgozás. Wulf farkasférfiak. Gyakori a két férfiból és egy nőből álló trió, közösségi gyermeknevelés."},
+    {"name":"Taur puszta","description":"Nyugati füves vidék, nomád pásztorok, sátrak. Taur bikaférfiak, csordaközösségek."},
+    {"name":"Központi mocsár","description":"Rejtett női boszorkányközösség, saját mágikus hagyománnyal."},
+    {"name":"Vulpi vidék","description":"Keleti erdők és mezők, falvak és földművelés. Vulpi rókaférfiak, jellemzően monogám párok."},
+    {"name":"Lio szavanna","description":"Déli meleg szavanna, kő- és agyagházak. Lio oroszlánférfiak. Több nőből és egy férfiból álló, közös háztartások, a nők egyenrangúak."}
+  ],
+  "calendar":"12 darab 28 napos hónap. Az első napon mindkét hold teli. Arany: 28 napos teljes ciklus; Kék: 7 napos. Arany újhold: 15. nap. Kék telihold: 1., 8., 15., 22. nap. Kettős teliholdkor Arany felülírja Kéket: feral csak 8.,15.,22. nap. Nincs hóközepi teljes sötétség.",
+  "source":"A szerző dokumentumából készült tömör 0.1 világkivonat és a beszélgetésben véglegesített naptár. A teljes szabálykönyv még nincs gépi formába átvezetve."
+}
