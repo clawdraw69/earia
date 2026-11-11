@@ -97,8 +97,10 @@ export function stepScene(game,contactsList){
   for(const [type,count] of Object.entries(m.contacts)){
    const c=Number(count)||0;
    if(c<=0)continue;
-   // Ha a zóna a karakter elsődleges nemi szerve (fogadó fél), -1.
-   // Ha nem (adó fél, pl. orális adás), -0.5.
+   // If the zone is the character's primary genital zone (receiving partner), subtract 1.
+// HU: Ha a zóna a karakter elsődleges nemi szerve (fogadó fél), -1.
+   // Otherwise (giving partner, e.g. giving oral), subtract 0.5.
+// HU: Ha nem (adó fél, pl. orális adás), -0.5.
    if(character.primaryZones?.includes(type)){
      loss+=1;
    } else {
@@ -110,12 +112,14 @@ export function stepScene(game,contactsList){
  }
  return log;
 }
-// Vágy-növekedés jeleneten kívül. A modell csak címkéz, a számokat itt adjuk.
+// Desire increases outside scenes. The model supplies labels; this code calculates values.
+// HU: Vágy-növekedés jeleneten kívül. A modell csak címkéz, a számokat itt adjuk.
 export const DESIRE_KINDS={sleep_together:0.2,day_together:0.2,intense_touch:0.2,erogenous_give:0.2,erogenous_receive:0.3,erogenous_extra:0.1,nudity:0.1,scent:0.1};
 export const DESIRE_TURN_CAP=0.5;
 export function applyDesireEvents(game,events){
  if(!Array.isArray(events)||!events.length)return [];
- if(game.scene?.active)return []; // aktus közben nincs vágyváltozás, csak stamina
+ if(game.scene?.active)return []; // No desire change during an act, only stamina.
+// HU: aktus közben nincs vágyváltozás, csak stamina
  const day=Math.floor((Number(game.minutes)||0)/1440);
  if(!game.desireMarks||game.desireMarks.day!==day)game.desireMarks={day,sleep:[],together:[]};
  const marks=game.desireMarks;

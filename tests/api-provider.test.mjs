@@ -31,7 +31,7 @@ test('API teljes út: titkosított kulcs, kapcsolat, kezdés, chat, hiba és hel
  const port=43221,base=`http://127.0.0.1:${port}/api`;
  const api=async(p,data)=>{const r=await fetch(base+p,{method:data===undefined?'GET':'POST',headers:{'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data)});return {status:r.status,data:await r.json()};};
  try{
-  child=spawn(process.execPath,['server.mjs'],{cwd:new URL('..',import.meta.url),env:{...process.env,EARIA_PORT:String(port),EARIA_SAVES:path.join(temp,'saves'),EARIA_CONFIG:path.join(temp,'config.json')},windowsHide:true,stdio:'ignore'});
+  child=spawn(process.execPath,['server.mjs'],{cwd:new URL('..',import.meta.url),env:{...process.env,EARIA_LANGUAGE:'hu',EARIA_PORT:String(port),EARIA_SAVES:path.join(temp,'saves'),EARIA_CONFIG:path.join(temp,'config.json')},windowsHide:true,stdio:'ignore'});
   for(let i=0;i<60;i++){try{await api('/status');break;}catch{await delay(100);}}
   const configured=await api('/settings',{provider:'api',apiBaseUrl:`http://127.0.0.1:${mock.address().port}`,apiModel:'test-model',apiKey:'dummy-test-key'});assert.equal(configured.status,200,JSON.stringify(configured.data));
   const disk=await fs.readFile(path.join(temp,'config.json'),'utf8');assert.ok(!disk.includes('dummy-test-key'));assert.ok(JSON.parse(disk).apiKeyEncrypted);

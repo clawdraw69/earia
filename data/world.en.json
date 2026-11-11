@@ -1,0 +1,14 @@
+{
+ "name":"Earia",
+ "premise":"A peaceful fantasy world whose peoples have developed different cultures and ways of life. Men are anthropomorphic beings with human intelligence; women have human appearances. Characters have independent personalities.",
+ "regions":[
+ {"name":"Ursa Mountains","description":"Northern mountains with permanently wintry peaks. Ursa bear-men and human women. A cave system with thermal springs; men sleep in cooler outer tents. The Chalice is a sacred place deep inside the cave. Iceclaw: a sacred ice cave at the summit."},
+ {"name":"Wulf Village","description":"Taiga at the mountain's foot, wooden houses, ironwood processing. Wulf wolf-men. Trios of two men and one woman are common, with communal child-rearing."},
+ {"name":"Taur Plains","description":"Western grasslands, nomadic herders and tents. Taur bull-men, herd communities."},
+ {"name":"Central Marsh","description":"A hidden community of women witches with its own magical tradition."},
+ {"name":"Vulpi Lands","description":"Eastern forests and fields, villages and agriculture. Vulpi fox-men, usually monogamous couples."},
+ {"name":"Lio Savanna","description":"Warm southern savanna, stone and clay houses. Lio lion-men. Shared households with several women and one man; the women have equal standing."}
+ ],
+ "calendar":"Twelve months of 28 days. Both moons are full on day 1. Gold: 28-day full cycle; Blue: 7-day cycle. Gold new moon: day 15. Blue full moons: days 1, 8, 15, 22. When both are full, Gold overrides Blue: feral days are only 8, 15, 22. There is no midmonth total darkness.",
+ "source":"A concise version 0.1 world extract from the author's document, plus the calendar finalized in conversation. The complete rulebook has not yet been implemented in machine-readable form."
+}

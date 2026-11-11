@@ -1,6 +1,6 @@
 # Earia 05 – download and setup
 
-[Magyar változat](README.md)
+[Magyar változat](README.hu.md)
 
 The distributable application is the **earia** folder. Download and extract the entire folder, not just the launcher. A copy of the README is included with the application.
 
@@ -98,3 +98,9 @@ Third-party components: [Python](https://www.python.org/downloads/release/python
 ## Contact and feedback
 
 Suggestions, bug reports, bug fixes, and feedback are welcome at **[clawdraw69@gmail.com](mailto:clawdraw69@gmail.com)**.
+
+## English localization status
+
+English is the default interface language; Hungarian remains available in the language selector. This localization is a preview: launcher and image-engine messages still include Hungarian, and a complete English UI review is pending. The existing automated suite passes all 70 tests; this is not complete English end-to-end coverage.
+
+Game reference documents: [English DOCX](docs/Earia%202.0.en.docx) · [Original Hungarian DOCX](docs/Earia%202.0.hu.docx). The English document still needs visual layout verification. These are historical source documents; some rules differ from the current implementation. The original Hungarian narrator prompt is preserved alongside its English translation.

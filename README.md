@@ -1,100 +1,106 @@
-# Earia 05 – letöltés és indítás
+# Earia 05 – download and setup
 
-[English version](README.en.md)
+[Magyar változat](README.hu.md)
 
-A továbbadható program az **earia** mappa. Az egész mappát töltsd le/csomagold ki, ne csak az indítófájlt. A README egy példánya a programban is megtalálható.
+The distributable application is the **earia** folder. Download and extract the entire folder, not just the launcher. A copy of the README is included with the application.
 
-GitHubról: **Code → Download ZIP**, majd a ZIP teljes tartalmát csomagold ki egy írható mappába. Az `INDITAS.cmd` a kicsomagolt program gyökerében található.
+On GitHub, choose **Code → Download ZIP**, then extract the entire archive into a writable folder. You will find `INDITAS.cmd` in the extracted application's root folder.
 
-## Milyen gépen fut?
+## Supported systems
 
-- **Windows 10/11, x64**, írható mappa, például `C:\Games\earia`. ZIP-ből közvetlenül ne indítsd.
-- NVIDIA: automatikus CUDA-gyorsítás, ha a kártya és az illesztőprogram támogatja a mellékelt PyTorch-változatot. Friss NVIDIA-driver ajánlott.
-- AMD, Intel vagy külön videokártya nélkül: **CPU-s képgenerálás**. Nem igényel NVIDIA-t, de egy kép percekig vagy tovább is készülhet. Ez a kiadás nem használ AMD/Intel GPU-gyorsítást.
-- A csomag nem macOS/Linux/Windows ARM kiadás. Az „univerzális” itt a Windows x64 gépeken elérhető CPU-s tartalék módot jelenti, nem minden operációs rendszer támogatását.
-- SD1.5-höz 16 GB RAM ajánlott kiindulás; CPU-s, referenciás vagy Pony/SDXL használathoz inkább 32 GB. A tényleges memóriaigény a modelltől és képmérettől függ; ez nem minden gépen mért minimum.
-- Legyen legalább 20 GB szabad hely; Ponyval és CUDA-val inkább 35 GB. A telepítő letöltési gyorsítótára is foglal helyet.
+- **Windows 10/11, x64**, with a writable installation folder such as `C:\Games\earia`. Do not launch directly from the ZIP archive.
+- NVIDIA: automatic CUDA acceleration when the GPU and driver support the installed PyTorch version. An up-to-date NVIDIA driver is recommended.
+- AMD, Intel, or no dedicated GPU: **CPU image generation**. NVIDIA hardware is not required, but generating one image may take several minutes or longer. This release does not provide AMD/Intel GPU acceleration.
+- This is not a macOS, Linux, or Windows ARM release. “Universal” here means a CPU fallback on Windows x64, not support for every operating system.
+- For SD1.5, 16 GB RAM is a recommended starting point; 32 GB is preferable for CPU generation, character references, or Pony/SDXL. Actual memory usage depends on the model and image size; these are recommendations, not minimums verified on every machine.
+- Allow at least 20 GB of free storage, preferably 35 GB with Pony and CUDA. The installer's download cache also takes up space.
 
-## Első indítás
+## First launch
 
-1. Indítsd el az `earia\INDITAS.cmd` fájlt.
-2. Az első indítás felajánlja a képmotor telepítését. **I** = letöltés és telepítés a program saját mappájába; **N** = a játék képmotor nélkül indul. Később a `KEP_MOTOR_TELEPITES.cmd` indítható.
-3. A telepítő saját Pythont, PyTorchot, Diffuserst, az SD1.5 alapmodellt és a karakterreferenciákhoz szükséges IP-Adapter modult telepíti. A letöltés több GB; internet szükséges. A parancsablakban látszik a folyamat és az esetleges hiba. Megszakadt telepítés után újra futtatható.
-4. A megnyíló játék Beállítások részében válaszd az API-t, add meg a saját szolgáltatódat, modellazonosítódat és API-kulcsodat. A mintában DeepSeek szerepel; a fiókodban elérhető modell nevét add meg. A beszélgetés az API-szolgáltatóhoz kerül, az API-használat díját te fizeted.
-5. Hozz létre új játékot. A képgenerálásnál a telepített képmodellek közül választhatsz.
+1. Run `INDITAS.cmd` inside the application folder.
+2. On first launch, you can install the image engine. At the Hungarian prompt, **I** means download and install into the application's own folder; **N** starts the game without the image engine. You can run `KEP_MOTOR_TELEPITES.cmd` later.
+3. The installer downloads its own Python, PyTorch, Diffusers, the SD1.5 base model, and IP-Adapter for character references. Downloads total several GB and require internet access. Progress and errors appear in the command window. You can rerun the installer after an interrupted installation.
+4. In the game's settings (**Beállítások**), select API mode and enter your provider, model identifier, and API key. The example configuration uses DeepSeek; enter a model name available to your account. Conversations are sent to your API provider, and you are responsible for API usage charges.
+5. Create a new game. In the image generation panel, choose from the installed image models.
 
-**Nem kell külön Node.js, Python, Git, ComfyUI, CUDA Toolkit, FFmpeg vagy kodekcsomag.** A Node benne van a letöltésben, a képfüggőségeket a telepítő intézi. Böngésző és a Windows PowerShell szükséges. Rendszergazdai telepítés alaphelyzetben nem kell.
+**You do not need to install Node.js, Python, Git, ComfyUI, CUDA Toolkit, FFmpeg, or a codec pack separately.** Node is bundled, and the installer handles image generation dependencies. A web browser and Windows PowerShell are required. Administrator privileges are not normally needed.
 
-Ha Windows hiányzó `VCRUNTIME`/`MSVCP` DLL-t vagy PyTorch DLL-betöltési hibát jelez, telepítsd/javítsd a [Microsoft Visual C++ x64 Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe) csomagot. Ez rendszerszintű összetevő, rendszergazdai jóváhagyást kérhet; a játék nem telepíti észrevétlenül. Drivertelepítést sem végez.
+If Windows reports a missing `VCRUNTIME`/`MSVCP` DLL or a PyTorch DLL loading error, install or repair the [Microsoft Visual C++ x64 Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe). This system component may require administrator approval; the game does not install it silently. It does not install GPU drivers either.
 
-## YiffyMix – mit kell hová másolni?
+## YiffyMix – where to put the model
 
-A YiffyMix nincs a csomagban, és a telepítő nem tölti le automatikusan.
+YiffyMix is not included and is not downloaded automatically.
 
-1. Szerezd be a használni kívánt **SD1.5-alapú YiffyMix checkpointot** a modell szerzőjének/terjesztőjének oldaláról, a hozzá tartozó feltételekkel.
-2. A `.safetensors` fájlt másold ide és nevezd át pontosan erre:
+1. Obtain the **SD1.5-based YiffyMix checkpoint** you want to use from its author or distributor, subject to its terms.
+2. Copy the `.safetensors` file to this location inside the application folder and give it this exact name:
 
-   `earia\image-gen\models\yiffymix\yiffymix.safetensors`
+   `image-gen\models\yiffymix\yiffymix.safetensors`
 
-3. Futtasd a képmotor telepítőjét is: a checkpoint mellé szükséges az SD1.5 konfiguráció és tokenizer. Pusztán a fájl átnevezése nem tesz egy tetszőleges modellt kompatibilissé.
+3. Also run the image engine installer: the checkpoint needs the SD1.5 configuration and tokenizer. Renaming an arbitrary model does not make it compatible.
 
-A korábbi helyi példányhoz nem volt hiteles verzió-/forrásleírás, ezért itt nincs találomra megadott YiffyMix-letöltési link vagy garantált verziószám. Más architektúrájú modellt ne másolj erre a névre.
+The previous local copy had no verified version or source information, so no guessed download link or guaranteed YiffyMix version is listed here. Do not put a model with a different architecture under this filename.
 
-Az alap **Stable Diffusion 1.5** YiffyMix nélkül is használható. Opcionális Pony telepítés parancsablakból, az earia mappában:
+The base **Stable Diffusion 1.5** model works without YiffyMix. To optionally install Pony, run this command from the application folder:
 
 ```bat
 KEP_MOTOR_TELEPITES.cmd -Models pony
 ```
 
-Ez az alap- és referenciamodulok mellé letölti a Pony V6 XL checkpointot, SDXL konfigurációját és referenciamodulját is. Jelentősen több tárhely és memória kell hozzá.
+Alongside the base and reference components, this downloads the Pony V6 XL checkpoint, its SDXL configuration, and its reference adapter. It requires considerably more storage and memory.
 
-## Eszközválasztás és hibakeresés
+## Device selection and troubleshooting
 
-Automatikus választás az alapértelmezés. Ha NVIDIA-val gond van, vagy biztosan CPU-t szeretnél:
+Automatic selection is the default. If NVIDIA acceleration causes problems, or you want to use the CPU explicitly:
 
 ```bat
 KEP_MOTOR_TELEPITES.cmd -Device cpu
 ```
 
-CUDA újratelepítése/engedélyezése:
+To install or enable CUDA support:
 
 ```bat
 KEP_MOTOR_TELEPITES.cmd -Device cuda
 ```
 
-A mód a `image-gen\device.json` fájlban is állítható: `auto`, `cpu`, `cuda`. `auto` alatt egy sikertelen CUDA-próba CPU-ra vált. Ez nem jelent automatikus CPU-újrapróbálkozást minden későbbi memóriahiba után. Memóriahibánál csökkentsd a képméretet, használj SD1.5 modellt vagy válassz CPU-t. A kényszerített `cuda` hibát jelez, ha nem működik.
+You can also set the mode in `image-gen\device.json`: `auto`, `cpu`, or `cuda`. In `auto` mode, a failed CUDA startup probe falls back to the CPU. This does not mean every subsequent out-of-memory error will automatically retry on the CPU. For memory errors, reduce the image size, use an SD1.5 model, or select CPU mode. Explicit `cuda` mode reports an error if CUDA is unavailable.
 
-Részletek: `logs\app-error.log`, `logs\image-engine.log`, `logs\setup-images.log`. Letöltési hibánál a telepítőablak üzenetét is másold ki. Az alkalmazás címe `http://127.0.0.1:43141`; a 04-es kiadástól eltérő portot használ. Kilépéshez a játék Kilépés gombját használd.
+Logs: `logs\app-error.log`, `logs\image-engine.log`, and `logs\setup-images.log`. For download problems, also copy the message shown in the installer window. The application runs at `http://127.0.0.1:43141`, on a different port from release 04. Use the game's **Kilépés** (Exit) button to shut down.
 
-## Mappák és adatvédelem
+## Folders and privacy
 
-| Útvonal az earia mappán belül | Tartalom |
+| Path inside the application folder | Contents |
 |---|---|
-| `runtime\node.exe` | A program mellékelt futtatókörnyezete |
-| `image-gen\runtime` | A telepítő saját Pythonja és képfüggőségei |
-| `image-gen\models\sd15` | Automatikusan letöltött SD1.5 |
-| `image-gen\models\yiffymix` | A kézzel bemásolt checkpoint |
-| `image-gen\models\ip-adapter` | Karakterreferencia-modul |
-| `image-gen\models\pony-v6-xl` | Opcionális Pony checkpoint és konfiguráció |
-| `image-gen\references\styles` | Saját globális stílusreferenciák; üresen is működik |
-| `saves` | Saját játékok, karakteradatok, avatárok, referenciák és számozott képek |
-| `config.json` | Saját beállítások és titkosított API-kulcs; első indításkor jön létre |
+| `runtime\node.exe` | Bundled application runtime |
+| `image-gen\runtime` | The installer's own Python and image generation dependencies |
+| `image-gen\models\sd15` | Automatically downloaded SD1.5 model |
+| `image-gen\models\yiffymix` | Manually supplied checkpoint |
+| `image-gen\models\ip-adapter` | Character reference adapter |
+| `image-gen\models\pony-v6-xl` | Optional Pony checkpoint and configuration |
+| `image-gen\references\styles` | Your global style references; may be left empty |
+| `saves` | Your games, character data, avatars, references, and numbered images |
+| `config.json` | Your settings and encrypted API key; created on first launch |
 
-A kiadás nem tartalmaz személyes mentést, kulcsot, referencia-képregényt vagy több GB-os modellt. A képek helyben készülnek; a telepítő csak függőségeket tölt le. Az API-kulcs Windows-felhasználóhoz kötötten titkosított: másik gépen/felhasználónál újra meg kell adni.
+The release contains no personal saves, keys, reference comics, or multi-GB models. Images are generated locally; the installer only downloads dependencies. API keys are encrypted for the current Windows user and must be entered again on another computer or under another user account.
 
-Ha használat után újra továbbadod, **ne küldd tovább** a `config.json`, `saves`, `logs`, saját referenciák és letöltési gyorsítótár tartalmát. Az eredeti, tiszta csomagot add tovább. A `models` gyökérmappa és a helyi beszédmodellhez kapcsolódó régi kód kompatibilitási okból megmaradt, de beszédmodell és llama futtatókörnyezet nincs mellékelve: ez a kiadás API-s játékra van előkészítve.
+If you redistribute the application after using it, **do not include** your `config.json`, `saves`, `logs`, personal references, or download cache. Share the original clean package instead. The top-level `models` folder and legacy local language-model code remain for compatibility, but no language model or llama runtime is bundled: this release is prepared for API-based gameplay.
 
-## Fejlesztőknek
+## For developers
 
 ```bat
 runtime\node.exe --test tests/*.test.mjs
 image-gen\runtime\python.exe image-gen\test_hardware.py
 ```
 
-Rögzített modellforrások/revíziók: `image-gen\install-models.py`. Futás közben a képmodellek betöltése offline történik. A telepítő nem módosítja a rendszer Pythonját. A 04-esből átvett játékszabályok/narrátorprompt tartalmát ez a csomagolás nem írta át. A karakterek összemosódását és a stílusbefolyásolás minőségét ez a kiadás nem oldja meg; most a továbbadható telepítés és a hardverfüggés volt a feladat.
+Pinned model sources and revisions are in `image-gen\install-models.py`. Image models load offline during generation. The installer does not modify the system Python installation. Packaging this release did not change the game rules or narrator prompt inherited from version 04. This release does not resolve character blending or style influence quality issues; its focus is distributable installation and hardware compatibility.
 
-Külső összetevők: [Python](https://www.python.org/downloads/release/python-31312/), [PyTorch](https://pytorch.org/get-started/locally/), [Diffusers](https://huggingface.co/docs/diffusers/), [SD1.5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5), [IP-Adapter](https://huggingface.co/h94/IP-Adapter), [Pony](https://huggingface.co/Runware/Pony_Diffusion_V6_XL). Mindegyik saját licenccel rendelkezik; ezek nem helyettesítik az Earia forráskódjának szerző által választandó licencét.
+Third-party components: [Python](https://www.python.org/downloads/release/python-31312/), [PyTorch](https://pytorch.org/get-started/locally/), [Diffusers](https://huggingface.co/docs/diffusers/), [SD1.5](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5), [IP-Adapter](https://huggingface.co/h94/IP-Adapter), and [Pony](https://huggingface.co/Runware/Pony_Diffusion_V6_XL). Each has its own license; these do not replace a license to be chosen by the author for Earia's source code.
 
-## Kapcsolat és visszajelzés
+## Contact and feedback
 
-Javaslatokat, hibajelentéseket, hibajavításokat és véleményeket örömmel várok a **[clawdraw69@gmail.com](mailto:clawdraw69@gmail.com)** e-mail-címre.
+Suggestions, bug reports, bug fixes, and feedback are welcome at **[clawdraw69@gmail.com](mailto:clawdraw69@gmail.com)**.
+
+## English localization status
+
+English is the default interface language; Hungarian remains available in the language selector. This localization is a preview: launcher and image-engine messages still include Hungarian, and a complete English UI review is pending. The existing automated suite passes all 70 tests; this is not complete English end-to-end coverage.
+
+Game reference documents: [English DOCX](docs/Earia%202.0.en.docx) · [Original Hungarian DOCX](docs/Earia%202.0.hu.docx). The English document still needs visual layout verification. These are historical source documents; some rules differ from the current implementation. The original Hungarian narrator prompt is preserved alongside its English translation.

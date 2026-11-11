@@ -1,6 +1,8 @@
 import {startScene,stepScene} from './rules.mjs';
-// A mesélő events javaslata automatikusan indítja és lépteti a körszámlálást.
-// A contacts egy objektum: kulcs a zóna (passive, oral, vaginal, anal, penis, nipple), érték az ingerek száma.
+// The narrator's suggested events automatically start and advance the round counter.
+// HU: A mesélő events javaslata automatikusan indítja és lépteti a körszámlálást.
+// contacts is an object: keys are zones (passive, oral, vaginal, anal, penis, nipple); values are stimulus counts.
+// HU: A contacts egy objektum: kulcs a zóna (passive, oral, vaginal, anal, penis, nipple), érték az ingerek száma.
 export function applyRoundEvents(game,events=[]){
  const list=Array.isArray(events)?events:[];
  const rated=list.filter(e=>e&&e.contacts&&typeof e.contacts==='object'&&Object.keys(e.contacts).length>0);

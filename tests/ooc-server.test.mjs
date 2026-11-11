@@ -7,7 +7,7 @@ import path from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
 test('OOC API: karakterfájl, mentés, privát terv, backup és újratöltés',async()=>{
  const temp=await fs.mkdtemp(path.join(os.tmpdir(),'earia-ooc-')),port=43217;
- const proc=spawn(process.execPath,['server.mjs'],{cwd:new URL('..',import.meta.url),env:{...process.env,EARIA_SAVES:temp,EARIA_PORT:String(port)},stdio:'pipe'});
+ const proc=spawn(process.execPath,['server.mjs'],{cwd:new URL('..',import.meta.url),env:{...process.env,EARIA_LANGUAGE:'hu',EARIA_SAVES:temp,EARIA_PORT:String(port)},stdio:'pipe'});
  const api=async(p,data)=>{const r=await fetch(`http://127.0.0.1:${port}/api${p}`,{method:data===undefined?'GET':'POST',headers:{'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data)});const body=await r.json();assert.equal(r.status,200,JSON.stringify(body));return body;};
  try{
   for(let i=0;i<60;i++){try{await api('/status');break;}catch{await delay(100);}}
